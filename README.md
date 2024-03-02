@@ -1,32 +1,30 @@
-# Список отзывов приложения
+# React + TypeScript + Vite
 
-Этот репозиторий содержит код для приложения "Список отзывов приложения". Цель этого приложения - отображение реальных отзывов вместе с их авторами и информацией о соответствующих компаниях, включая их названия и годы основания.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Технические характеристики
+Currently, two official plugins are available:
 
-Задача заключается в улучшении существующего приложения "Список отзывов приложения" для включения реальных отзывов, их авторов и информации о компаниях. Эти данные могут быть получены с использованием асинхронных функций:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- `getProducts`: Возвращает Promise массива продуктов.
-- `getUsers`: Возвращает Promise массива пользователей.
-- `getReviews`: Возвращает Promise массива отзывов.
-- `getCompanies`: Возвращает Promise массива компаний.
+## Expanding the ESLint configuration
 
-Объекты Product реализуют интерфейс Product, содержащий только UUID пользователей, отзывов и компаний.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Интерфейсы ProductInformation и ReviewInformation предоставляют полную информацию о пользователях и отзывах соответственно.
+- Configure the top-level `parserOptions` property like this:
 
-## Детали реализации
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Для выполнения задачи, описанной в технических характеристиках, необходимо выполнить следующие шаги:
-
-1. Использовать предоставленные асинхронные функции (`getUsers`, `getReviews`, `getCompanies`) для получения необходимых данных.
-2. Реализовать логику для сопоставления UUID в объектах Product с фактической информацией о пользователях, отзывах и компаниях.
-3. Улучшить пользовательский интерфейс для отображения реальных отзывов вместе с их авторами и подробной информацией о компаниях.
-
-## Использование
-
-Чтобы использовать это приложение, следуйте этим шагам:
-
-1. Клонируйте репозиторий на свой компьютер.
-2. Установите все необходимые зависимости.
-3. Запустите приложение.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
